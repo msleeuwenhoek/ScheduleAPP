@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       @user = User.find_by_id(params[:id])
     respond_to do |format|
         if @user.update(user_params)
-            redirect_to users_path, notice: 'you succesfully updated your profile.'
+            redirect_to users_path, notice: 'You succesfully updated your profile.'
         else
           render :edit
         end
@@ -26,6 +26,6 @@ class UsersController < ApplicationController
   
   private
   def user_params
-    params.require(:user).permit(:email)
+    params.require(:user).permit(:email, :first_name, :last_name)
   end
 end
