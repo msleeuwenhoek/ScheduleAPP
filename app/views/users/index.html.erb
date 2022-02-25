@@ -1,0 +1,8 @@
+<h1>Admin#show</h1>
+<p>Find me in app/views/admin/show.html.erb</p>
+
+<% @users.each do |user|%>
+<div><%=user.email%></div>
+<%= link_to 'show', user_path(user)%>
+<%= link_to 'Edit', edit_user_path(user)%>
+<% end %>
