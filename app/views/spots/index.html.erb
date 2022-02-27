@@ -20,6 +20,8 @@
       <td><%= spot.time %></td>
        <td><%= spot.spot_index_number %></td>
       <td><%= spot.user.full_name %></td>
+     <td><%= link_to 'Show', spot_path(spot)%> <%= link_to 'Edit', edit_spot_path(spot)%></td>
+</div>
     </tr>
     <% end %>
   </tbody>

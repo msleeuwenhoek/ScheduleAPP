@@ -8,6 +8,7 @@ class SpotsController < ApplicationController
   
   def show
     @spot = Spot.find_by_id(params[:id])
+    @lessons = @spot.lessons
   end
 
   def destroy
