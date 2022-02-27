@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @spot = Spot.where(user_id: current_user.id)
+    @spots = Spot.where(user_id: current_user.id)
+    @lessons = current_user.lessons
   end
 end
