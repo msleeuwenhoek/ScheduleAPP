@@ -10,6 +10,6 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
-  has_one :spot
+  has_many :spots
   has_many :lessons, through: :spots
 end

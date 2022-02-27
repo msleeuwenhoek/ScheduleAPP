@@ -17,5 +17,8 @@
     <div class='actions'>
     <%= form.submit class: 'btn btn-primary' %>
     <%= link_to 'Cancel', users_path, class: 'btn btn-secondary' %>
+
+    <%= button_to "Delete user", registration_path(@user), form: {data: {turbo_confirm: "Are you sure?" }}, method: :delete %>
+
     </div>
 <% end %>
