@@ -1,0 +1,26 @@
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Spot ID</th>
+      <th scope="col">Period</th>
+      <th scope="col">Weekday</th>
+      <th scope="col">Time</th>
+      <th scope="col">Index</th>
+      <th scope="col">Student</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <% @spots.each do | spot | %>
+    <tr>
+      <th scope="row"><%= spot.id %></th>
+      <td><%= spot.period %></td>
+      <td><%= spot.weekday %></td>
+      <td><%= spot.time %></td>
+       <td><%= spot.spot_index_number %></td>
+      <td><%= spot.user.full_name %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
