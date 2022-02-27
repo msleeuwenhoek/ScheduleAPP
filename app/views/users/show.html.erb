@@ -1,3 +1,30 @@
-<%=@user.email %>
-<%= @user.first_name%>
-<%= @user.last_name%>
+<div><%=@user.email %></div>
+<div> <%= @user.full_name%></div>
+
+
+<% @spots.each do |spot|%>
+    <div><%=spot.period%></div>
+    <div><%=spot.weekday%></div>
+    <div><%=spot.time%></div>
+<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+    
+      <th scope="col">Date</th>
+      <th scope="col">Timeslot</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <% @lessons.each do | lesson | %>
+    <tr>
+      <th scope="row"><%= lesson.date %></th>
+      <td><%= lesson.timeslot %></td>
+      <td><%= link_to 'Show', lesson_path(lesson)%> <%= link_to 'Edit', edit_lesson_path(lesson)%></td>
+
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find_by_id(params[:id])
+    @lessons = @user.lessons
+    @spots = @user.spots
   end
 
   def destroy
