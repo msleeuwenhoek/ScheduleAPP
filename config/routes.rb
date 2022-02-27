@@ -10,10 +10,11 @@ Rails.application.routes.draw do
   
   devise_for :users, controllers: {registrations: 'users/registrations', sessions: 'users/sessions'}
 
-
+scope 'admin' do
   resources :users
   resources :lessons
   resources :spots
+end
 
   
 
