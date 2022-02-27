@@ -23,13 +23,13 @@ class SpotsController < ApplicationController
   
   def update
       @spot = Spot.find_by_id(params[:id])
-    respond_to do |format|
+    
         if @spot.update(spot_params)
-            redirect_to spots_path, notice: 'You succesfully deleted the spot.'
+            redirect_to spots_path, notice: 'You succesfully updated the spot.'
         else
           render :edit
         end
-    end
+   
   end
   
   private
