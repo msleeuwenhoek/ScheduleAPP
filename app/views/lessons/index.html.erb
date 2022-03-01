@@ -1,0 +1,28 @@
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Spot Index</th>
+      <th scope="col">Weekday</th>
+      <th scope="col">Time</th>
+      <th scope="col">Date</th>
+      <th scope="col">Student</th>
+     
+      
+    </tr>
+  </thead>
+  <tbody>
+    <% @lessons.each do | lesson | %>
+    <tr>
+      <th scope="row"></th>
+      <td><%= lesson.spot.spot_index_number %></td>
+      <td><%= lesson.spot.weekday %></td>
+      <td><%= lesson.timeslot %></td>
+       <td><%= lesson.date %></td>
+      <td><%= lesson.spot.user.full_name %></td>
+      <td><%= link_to 'Show', lesson_path(lesson)%> <%= link_to 'Edit', edit_lesson_path(lesson)%></td>
+</div>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

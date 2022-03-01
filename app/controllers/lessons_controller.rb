@@ -1,5 +1,10 @@
 class LessonsController < ApplicationController
- def destroy
+  def index
+    @lessons = Lesson.all
+    
+  end
+ 
+  def destroy
     @lesson = Lesson.find_by_id(params[:id])
     @lesson.destroy
     redirect_to lessons_path, notice: 'The lesson has been deleted'
