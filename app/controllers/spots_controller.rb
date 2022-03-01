@@ -1,5 +1,8 @@
 class SpotsController < ApplicationController
-    
+  def new
+    @spot = Spot.new(spot_params)
+  end
+
   
 
   def index
@@ -24,17 +27,17 @@ class SpotsController < ApplicationController
   def update
       @spot = Spot.find_by_id(params[:id])
     
-        if @spot.update(spot_params)
-            redirect_to spots_path, notice: 'You succesfully updated the spot.'
-        else
-          render :edit
-        end
+      if @spot.update(spot_params)
+          redirect_to spots_path, notice: 'You succesfully updated the spot.'
+      else
+        render :edit
+      end
    
   end
   
   private
   def spot_params
-    params.require(:spot).permit(:period, :weekday, :time, :spot_index_number, :user_id)
+    params.require(:spot).permit(:period, :weekday, :time, :spot_index_number, :user_id, :lesson_amount)
   end
 end
 

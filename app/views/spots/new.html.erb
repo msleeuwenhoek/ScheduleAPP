@@ -1,4 +1,7 @@
-<%= form_for(@spot,   url: spot_path, ) do |form|%>
+
+
+
+<%= form_for(@spot, html: {'data-turbo' => "false"}, url: spot_path, ) do |form|%>
     <div class='form-group'>
     <%= form.label :period %>
     <%= form.text_field :period, class: 'form-control'%>
@@ -24,9 +27,10 @@
     <%= form.number_field :lesson_amount, class: 'form-control'%>
     </div>
      <div class="actions">
-    <%= form.submit "Update" %>
+    <%= form.submit "New" %>
     </div>
 </div>   
 <%= link_to 'Cancel', spots_path, class: 'btn btn-secondary' %>
 
 <% end %>
+

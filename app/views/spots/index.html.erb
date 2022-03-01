@@ -8,6 +8,7 @@
       <th scope="col">Time</th>
       <th scope="col">Index</th>
       <th scope="col">Student</th>
+      <th scope='col'>Lesson count</th>
       
     </tr>
   </thead>
@@ -20,6 +21,7 @@
       <td><%= spot.time %></td>
        <td><%= spot.spot_index_number %></td>
       <td><%= spot.user.full_name %></td>
+      <td><%= spot.lesson_amount %></td>
      <td><%= link_to 'Show', spot_path(spot)%> <%= link_to 'Edit', edit_spot_path(spot)%></td>
 </div>
     </tr>
