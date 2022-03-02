@@ -1,3 +1,34 @@
+
+
+
+
+ 
+  </table>
+  </tbody>
+
+<% @spots.each do |spot|%>
+  <% frame_id = dom_id(spot )%>
+  <%= form_with model: spot, data: {turbo_frame: frame_id} do %>
+    <%= turbo_frame_tag frame_id do %>
+    <tr>
+      <td><%= spot.period%></td>
+     <td> <%=spot.weekday%></td>
+      </td><span><%= link_to 'Edit', edit_spot_path(spot)%></span></td>
+     <tr>
+    <%end %>
+  <%end %>
+<% end %>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
 <%= render 'new_form', model: @spot%>
 
 <table class="table">

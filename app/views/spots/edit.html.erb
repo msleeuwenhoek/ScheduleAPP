@@ -1,5 +1,14 @@
 
-
+<%= form_with(model: @spot,   url: spot_path, ) do |form|%>
+    <% frame_id = dom_id(@spot)%>
+    <%= turbo_frame_tag frame_id do %>
+         <%= form.label :period %>
+        <%= form.text_field :period%>
+        <%= form.label :weekday %>
+        <%= form.select :weekday, weekday_options_for_select( index_as_value: false, day_format: :day_names), class: 'form-control' %>
+        <%= form.button 'Save'%>
+    <% end %>
+<% end%>
 
 <%= form_with(model: @spot,   url: spot_path, ) do |form|%>
     <div class='form-group'>
@@ -12,7 +21,7 @@
     <div class='form-group'>
     <%= render 'inline_fields', form: form, attribute: :weekday do %>
         <%= form.label :weekday %>
-        <%= form.text_field :weekday, class: 'form-control'%>
+        <%= form.select :weekday, weekday_options_for_select( index_as_value: false, day_format: :day_names), class: 'form-control' %>
     <% end %>
     </div>
 
