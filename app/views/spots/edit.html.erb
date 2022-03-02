@@ -1,28 +1,49 @@
-<%= form_for(@spot,   url: spot_path, ) do |form|%>
+
+
+
+<%= form_with(model: @spot,   url: spot_path, ) do |form|%>
     <div class='form-group'>
-    <%= form.label :period %>
-    <%= form.text_field :period, class: 'form-control'%>
+    <%= render 'inline_fields', form: form, attribute: :period do %>
+        <%= form.label :period %>
+        <%= form.text_field :period%>
+    <% end %>
     </div>
+
     <div class='form-group'>
-    <%= form.label :weekday %>
-    <%= form.text_field :weekday, class: 'form-control'%>
+    <%= render 'inline_fields', form: form, attribute: :weekday do %>
+        <%= form.label :weekday %>
+        <%= form.text_field :weekday, class: 'form-control'%>
+    <% end %>
     </div>
+
     <div class='form-group'>
-    <%= form.label :time %>
-    <%= form.number_field :time, class: 'form-control'%>
+    <%= render 'inline_fields', form: form, attribute: :time do %>
+        <%= form.label :time %>
+        <%= form.number_field :time, class: 'form-control'%>
+    <% end %>
     </div>
+
     <div class='form-group'>
-    <%= form.label :spot_index_number %>
-    <%= form.number_field :spot_index_number, class: 'form-control'%>
+    <%= render 'inline_fields', form: form, attribute: :spot_index_number do %>
+        <%= form.label :spot_index_number %>
+        <%= form.number_field :spot_index_number, class: 'form-control'%>
+    <% end %>
     </div>
+
     <div class='form-group'>
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id, class: 'form-control'%>
+    <%= render 'inline_fields', form: form, attribute: :user_id do %>
+        <%= form.label :user_id %>
+        <%= form.number_field :user_id, class: 'form-control'%>
+    <% end %>
     </div>
+
     <div class='form-group'>
-    <%= form.label :lesson_amount %>
-    <%= form.number_field :lesson_amount, class: 'form-control'%>
+    <%= render 'inline_fields', form: form, attribute: :lesson_amount do %>
+        <%= form.label :lesson_amount %>
+        <%= form.number_field :lesson_amount, class: 'form-control'%>
+    <% end %>
     </div>
+
      <div class="actions">
     <%= form.submit "Update" %>
     </div>

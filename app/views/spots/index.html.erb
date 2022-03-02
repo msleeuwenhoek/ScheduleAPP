@@ -1,8 +1,7 @@
-
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Spot ID</th>
+    
       <th scope="col">Period</th>
       <th scope="col">Weekday</th>
       <th scope="col">Time</th>
@@ -13,18 +12,43 @@
     </tr>
   </thead>
   <tbody>
-    <% @spots.each do | spot | %>
-    <tr>
-      <th scope="row"></th>
-      <td><%= spot.period %></td>
-      <td><%= spot.weekday %></td>
-      <td><%= spot.time %></td>
-       <td><%= spot.spot_index_number %></td>
-      <td><%= spot.user.full_name %></td>
-      <td><%= spot.lesson_amount %></td>
-     <td><%= link_to 'Show', spot_path(spot)%> <%= link_to 'Edit', edit_spot_path(spot)%></td>
-</div>
-    </tr>
-    <% end %>
+
+<% @spots.each do |spot| %>
+  <tr>
+  <td> <%= render 'inline_edit', model: spot, attribute: :period do %>
+    <%=spot.period%> 
+  <% end %></td>
+  
+  <td><%= render 'inline_edit', model: spot, attribute: :weekday do %>
+    <%= spot.weekday %>
+  <%end%></td>
+
+  <td><%= render 'inline_edit', model: spot, attribute: :time do %>
+    <%= spot.time %>
+  <%end%></td>
+  
+  <td><%= render 'inline_edit', model: spot, attribute: :period do %>
+    <%= spot.spot_index_number %>
+  <%end%></td>
+  
+  <td>
+    <%= spot.user.full_name %>
+  </td>
+  
+  <td> <%= render 'inline_edit', model: spot, attribute: :lesson_amount do %>
+  <%= spot.lesson_amount %>
+  <% end %></td>
+  
+  <td><%= link_to 'Show', spot_path(spot)%> <%= link_to 'Edit', edit_spot_path(spot)%></td>
+  </tr>
+
+<%end %>
+
+
   </tbody>
 </table>
+
+
+      
+     
+ 

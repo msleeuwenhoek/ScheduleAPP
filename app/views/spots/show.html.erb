@@ -1,4 +1,11 @@
-<div>Period: <%=@spot.period%></div>
+
+
+
+
+<%= render 'inline_edit', model: @spot, attribute: :period do %>
+  <div>Period: <%=@spot.period%></div>
+<% end %>
+
 <div>Weekday: <%=@spot.weekday%></div>
 <div>Time: <%=@spot.time%></div>
 <div>Student: <%=@spot.user.full_name%></div>

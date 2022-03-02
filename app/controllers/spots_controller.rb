@@ -22,6 +22,7 @@ class SpotsController < ApplicationController
   
   def edit
      @spot = Spot.find_by_id(params[:id])
+     @users = User.all
   end 
   
   def update

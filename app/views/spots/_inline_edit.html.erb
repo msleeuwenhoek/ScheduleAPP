@@ -1,0 +1,7 @@
+<% frame_id = dom_id(model, "#{attribute}_turbo_frame")%>
+<%= form_with model: model, data: {turbo_frame: frame_id} do %>
+<%= turbo_frame_tag frame_id do %>
+  <%= yield %>
+  <span><%= link_to 'Edit', edit_polymorphic_path(model)%></span>
+<% end %>
+<%end %>
