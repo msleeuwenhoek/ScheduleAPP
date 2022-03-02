@@ -1,12 +1,24 @@
 class SpotsController < ApplicationController
   def new
+    @spot = Spot.new
+    @users = User.all
+  end
+
+  def create
     @spot = Spot.new(spot_params)
+    if @spot.save
+      redirect_to spots_path
+    else
+      render :new
+    end
   end
 
   
 
   def index
+    @spot = Spot.new
     @spots = Spot.all
+    @users = User.all
   end
   
   def show
