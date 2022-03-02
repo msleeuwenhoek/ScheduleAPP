@@ -32,8 +32,7 @@
 
     <div class='form-group'>
     <%= render 'inline_fields', form: form, attribute: :user_id do %>
-        <%= form.label :user_id %>
-        <%= form.number_field :user_id, class: 'form-control'%>
+        <%= form.select :user_id, @users.map { |user| [user.full_name, user.id]} %>
     <% end %>
     </div>
 
@@ -43,6 +42,8 @@
         <%= form.number_field :lesson_amount, class: 'form-control'%>
     <% end %>
     </div>
+
+    
 
      <div class="actions">
     <%= form.submit "Update" %>

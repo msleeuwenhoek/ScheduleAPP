@@ -31,15 +31,15 @@
     <%= spot.spot_index_number %>
   <%end%></td>
   
-  <td>
+  <td><%= render 'inline_edit', model: spot, attribute: :user_id do %>
     <%= spot.user.full_name %>
-  </td>
+  <%end%></td>
   
   <td> <%= render 'inline_edit', model: spot, attribute: :lesson_amount do %>
   <%= spot.lesson_amount %>
   <% end %></td>
   
-  <td><%= link_to 'Show', spot_path(spot)%> <%= link_to 'Edit', edit_spot_path(spot)%></td>
+  <td><%= link_to 'Show', spot_path(spot)%> <%= link_to 'Edit', edit_spot_path(spot)%> <%= button_to 'Delete', spot,  :method => :delete %></td>
   </tr>
 
 <%end %>
