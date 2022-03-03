@@ -1,0 +1,13 @@
+<%= form_tag(search_path, method: "get", remote: true) do %>
+            
+ 
+
+
+  <%= select_tag "filter", options_for_select(['Select Filter', 
+  'Monday', 
+  'tuesday']), class:'custom-select'%>
+  <%= submit_tag "Search", class:'btn btn-dark', id:'search_submit'%>
+              
+<% end %>
+
+<%=@spots %>

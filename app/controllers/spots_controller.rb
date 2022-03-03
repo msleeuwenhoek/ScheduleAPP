@@ -13,12 +13,33 @@ class SpotsController < ApplicationController
     end
   end
 
+  def search 
+
+    @spots = Spot.all
+    if params[:filter] == 'Select filter'
+       symbol = params[:filter]
+      @spots = Spots.where(Spot.weekday= symbol)
+    end
+
+    
+
+ 
+  end
   
 
   def index
+    @error = 'normal'
     @spot = Spot.new
-    @spots = Spot.all
+    
     @users = User.all
+    if params[:filter] == 'Select Filter' || params[:filter] == nil
+      @spots= Spot.all
+    else
+      @error = 'error'
+       symbol = params[:filter]
+      @spots = Spot.where(weekday: symbol)
+    end
+    
   end
   
   def show
