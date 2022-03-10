@@ -13,32 +13,20 @@ class SpotsController < ApplicationController
     end
   end
 
-  def search 
-
-    @spots = Spot.all
-    if params[:filter] == 'Select filter'
-       symbol = params[:filter]
-      @spots = Spots.where(Spot.weekday= symbol)
-    end
-
-    
-
- 
-  end
+  
   
 
   def index
-    @error = 'normal'
+    
     @spot = Spot.new
     
     @users = User.all
-    if params[:filter] == 'Select Filter' || params[:filter] == nil
-      @spots= Spot.all
-    else
-      @error = 'error'
-       symbol = params[:filter]
-      @spots = Spot.where(weekday: symbol)
-    end
+    @spots = Spot.all
+    @spots = @spots.where(start_date: params[:start_date]) if params[:start_date]
+    @spots = @spots.where(weekday: params[:weekday]) if params[:weekday] != 'Select weekday'
+    @spots = @spots.where(time: params[:time]) if params[:time] != 'Select time'
+   
+    
     
   end
   
@@ -50,7 +38,7 @@ class SpotsController < ApplicationController
   def destroy
     @spot = Spot.find_by_id(params[:id])
     @spot.destroy
-    redirect_to spots_path, notice: 'The spot has been deleted'
+    redirect_to users_path, notice: 'The spot has been deleted'
   end
   
   def edit
@@ -71,7 +59,7 @@ class SpotsController < ApplicationController
   
   private
   def spot_params
-    params.require(:spot).permit(:period, :weekday, :time, :spot_index_number, :user_id, :lesson_amount)
+    params.require(:spot).permit(:start_date, :end_date, :weekday, :time, :spot_index_number, :user_id, :lesson_amount)
   end
 end
 

@@ -1,103 +1,72 @@
 
+<div class='overview-menu'>
+  <div class='menu-area'>
+  <h2>Filters</h2>
+    <%= form_tag(spots_path, method: "get", remote: true) do %>
 
 
-<%= form_tag(spots_path, method: "get", remote: true) do %>
-            
- 
+      <%= select_tag "start_date", options_for_select(Spot.all.map {|date| date.start_date}.uniq), class:'custom-select'%>    
+      <br/> 
+      <%= select_tag "weekday", options_for_select(['Select weekday', 
+      'Monday', 
+      'Tuesday']), class:'custom-select'%>
+      <br/>
+      <%= select_tag 'time', options_for_select(['Select time', 18, 20]) %>
 
+      <%= submit_tag "Search", class:'btn btn-dark', id:'search_submit'%>
+                  
+    <% end %>
+  </div>    
 
-  <%= select_tag "filter", options_for_select(['Select Filter', 
-  'Monday', 
-  'tuesday']), class:'custom-select'%>
-  <%= submit_tag "Search", class:'btn btn-dark', id:'search_submit'%>
-              
-<% end %>
-
-<div> <%= @error %></div>
- 
-  </table>
-  </tbody>
+  <div class = 'menu-area'>
+    <h2>New Spot</h2>
+      
+    <%= render 'new_form', model: @spot%>
+  </div>
+</div>
+</div>
+<br/>
+<div class='overview-table'>
+ <table class='table'>  
+    <thead>    
+      <th>Starting date</th>
+      <th>End date</th>
+      <th>Weekday</th>
+      <th>Time</th>
+      <th>Index</th>
+      <th>Student</th>
+      <th>Lesson count</th>
+    </div>
+   </thead>
+   <tbody>
 
 <% @spots.each do |spot|%>
+
+
+  <tr> 
   <% frame_id = dom_id(spot )%>
   <%= form_with model: spot, data: {turbo_frame: frame_id} do %>
     <%= turbo_frame_tag frame_id do %>
-    <tr>
-      <td><%= spot.period%></td>
-     <td> <%=spot.weekday%></td>
-      <span><%= link_to 'Edit', edit_spot_path(spot)%></span>
-     <tr>
+   
+      <td> <%= spot.start_date%></td>
+      <td> <%= spot.end_date%></td>
+      <td> <%=spot.weekday%></td>
+      <td> <%= spot.time %></td>
+      <td> <%= spot.spot_index_number %></td>
+      <td> <%= spot.user.full_name %></td>
+      <td> <%= spot.lesson_amount %></td>
+  
+      <td><%= link_to 'Edit', edit_spot_path(spot)%></td>
+      <td><%= link_to 'Show', spot_path(spot)%> <%= link_to 'Edit', edit_spot_path(spot)%> <%= button_to 'Delete', spot,  :method => :delete %></td>
+  
+      
+   
     <%end %>
-  <%end %>
+  <%end %> 
+  </tr>
 <% end %>
 </tbody>
 </table>
-
-
-
-
-
-
-
-
-
-<%= render 'new_form', model: @spot%>
-
-<table class="table">
-  <thead>
-    <tr>
+</div>
     
-      <th scope="col">Period</th>
-      <th scope="col">Weekday</th>
-      <th scope="col">Time</th>
-      <th scope="col">Index</th>
-      <th scope="col">Student</th>
-      <th scope='col'>Lesson count</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-
-<% @spots.each do |spot| %>
-  <tr>
-  <td> <%= render 'inline_edit', model: spot, attribute: :period do %>
-    <%=spot.period%> 
-  <% end %></td>
-  
-  <td><%= render 'inline_edit', model: spot, attribute: :weekday do %>
-    <%= spot.weekday %>
-  <%end%></td>
-
-  <td><%= render 'inline_edit', model: spot, attribute: :time do %>
-    <%= spot.time %>
-  <%end%></td>
-  
-  <td><%= render 'inline_edit', model: spot, attribute: :period do %>
-    <%= spot.spot_index_number %>
-  <%end%></td>
-  
-  <td><%= render 'inline_edit', model: spot, attribute: :user_id do %>
-    <%= spot.user.full_name %>
-  <%end%></td>
-  
-  <td> <%= render 'inline_edit', model: spot, attribute: :lesson_amount do %>
-  <%= spot.lesson_amount %>
-  <% end %></td>
-  
-  <td><%= link_to 'Show', spot_path(spot)%> <%= link_to 'Edit', edit_spot_path(spot)%> <%= button_to 'Delete', spot,  :method => :delete %></td>
-  </tr>
-
-<%end %>
-
-
-  </tbody>
-</table>
-
-
-<script>
-    function clickSubmit() {
-        $("#search_submit").trigger("click");
-    }
-</script>
-     
  

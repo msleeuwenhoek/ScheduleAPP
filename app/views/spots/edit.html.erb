@@ -1,63 +1,38 @@
 
 <%= form_with(model: @spot,   url: spot_path, ) do |form|%>
+<tr>
     <% frame_id = dom_id(@spot)%>
     <%= turbo_frame_tag frame_id do %>
-         <%= form.label :period %>
-        <%= form.text_field :period%>
-        <%= form.label :weekday %>
-        <%= form.select :weekday, weekday_options_for_select( index_as_value: false, day_format: :day_names), class: 'form-control' %>
-        <%= form.button 'Save'%>
-    <% end %>
-<% end%>
-
-<%= form_with(model: @spot,   url: spot_path, ) do |form|%>
-    <div class='form-group'>
-    <%= render 'inline_fields', form: form, attribute: :period do %>
-        <%= form.label :period %>
-        <%= form.text_field :period%>
-    <% end %>
-    </div>
-
-    <div class='form-group'>
-    <%= render 'inline_fields', form: form, attribute: :weekday do %>
-        <%= form.label :weekday %>
-        <%= form.select :weekday, weekday_options_for_select( index_as_value: false, day_format: :day_names), class: 'form-control' %>
-    <% end %>
-    </div>
-
-    <div class='form-group'>
-    <%= render 'inline_fields', form: form, attribute: :time do %>
-        <%= form.label :time %>
-        <%= form.number_field :time, class: 'form-control'%>
-    <% end %>
-    </div>
-
-    <div class='form-group'>
-    <%= render 'inline_fields', form: form, attribute: :spot_index_number do %>
-        <%= form.label :spot_index_number %>
-        <%= form.number_field :spot_index_number, class: 'form-control'%>
-    <% end %>
-    </div>
-
-    <div class='form-group'>
-    <%= render 'inline_fields', form: form, attribute: :user_id do %>
-        <%= form.select :user_id, @users.map { |user| [user.full_name, user.id]} %>
-    <% end %>
-    </div>
-
-    <div class='form-group'>
-    <%= render 'inline_fields', form: form, attribute: :lesson_amount do %>
-        <%= form.label :lesson_amount %>
-        <%= form.number_field :lesson_amount, class: 'form-control'%>
-    <% end %>
-    </div>
-
+  
+   
+        <td><%= form.text_field :period%></td>
+        
+        
+        <td><%= form.select :weekday, weekday_options_for_select( index_as_value: false, day_format: :day_names), class: 'form-control' %> </td>
+        
+        
+            
+        <td><%= form.number_field :time%></td>
+        
+        
+            
+        <td><%= form.number_field :spot_index_number%></td>
+        
+        
+        <td><%= form.select :user_id, @users.map { |user| [user.full_name, user.id]} %></td>
+        
+        
+        
+        <td><%= form.number_field :lesson_amount%></td>
+        
+        
+        <td><%= form.button 'Save'%></td>
     
+     <% end %> 
+</tr>
+<% end%>
+<br />
+<br />
 
-     <div class="actions">
-    <%= form.submit "Update" %>
-    </div>
-</div>   
 <%= link_to 'Cancel', spots_path, class: 'btn btn-secondary' %>
 
-<% end %>

@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_01_161516) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_10_183930) do
   create_table "lessons", force: :cascade do |t|
-    t.string "date"
+    t.date "date"
     t.integer "timeslot"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -21,7 +21,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_01_161516) do
   end
 
   create_table "spots", force: :cascade do |t|
-    t.string "period"
     t.string "weekday"
     t.integer "time"
     t.integer "spot_index_number"
@@ -29,6 +28,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_01_161516) do
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.integer "lesson_amount"
+    t.date "end_date"
+    t.date "start_date"
     t.index ["user_id"], name: "index_spots_on_user_id"
   end
 

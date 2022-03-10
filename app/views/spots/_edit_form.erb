@@ -6,13 +6,8 @@
 <%= form_with(model: model ) do |form|%>
 
     
-        <%= form.label :start_date %> 
-        <%= form.date_select :start_date, order: [:day, :month, :year]%>
-
-        <br/>
-
-        <%= form.label :end_date %> 
-        <%= form.date_select :end_date, order: [:day, :month, :year]%>
+        <%= form.label :period %> 
+        <%= form.select :period, options_for_select(['March', 'April'])%>
         <br/>
  
     
@@ -55,5 +50,3 @@
 <%= link_to 'Cancel', spots_path, class: 'btn btn-secondary' %>
 
 <% end %>
-
-
