@@ -1,8 +1,7 @@
 
 <%= form_with(model: @spot,   url: spot_path, ) do |form|%>
 <tr>
-    <% frame_id = dom_id(@spot)%>
-    <%= turbo_frame_tag frame_id do %>
+   
   
    
         <td><%= form.text_field :period%></td>
@@ -17,18 +16,19 @@
         
             
         <td><%= form.number_field :spot_index_number%></td>
-        
-        
-        <td><%= form.select :user_id, @users.map { |user| [user.full_name, user.id]} %></td>
-        
-        
+        <td>
+            <% frame_id = dom_id(@spot)%>
+            <%= turbo_frame_tag frame_id do %>
+                <%= form.select :user_id, @users.map { |user| [user.full_name, user.id]} %>
+            <% end %>
+        </td>
         
         <td><%= form.number_field :lesson_amount%></td>
         
         
         <td><%= form.button 'Save'%></td>
     
-     <% end %> 
+     
 </tr>
 <% end%>
 <br />

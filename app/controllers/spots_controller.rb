@@ -22,9 +22,10 @@ class SpotsController < ApplicationController
     
     @users = User.all
     @spots = Spot.all
-    @spots = @spots.where(start_date: params[:start_date]) if params[:start_date]
-    @spots = @spots.where(weekday: params[:weekday]) if params[:weekday] != 'Select weekday'
-    @spots = @spots.where(time: params[:time]) if params[:time] != 'Select time'
+    
+    @spots = @spots.where(start_date: params[:start_date]) if params[:start_date] != nil
+    @spots = @spots.where(weekday: params[:weekday]) if params[:weekday] != 'Select weekday' && params[:weekday] != nil
+    @spots = @spots.where(time: params[:time]) if params[:time] != 'Select time' && params[:time] != nil
    
     
     

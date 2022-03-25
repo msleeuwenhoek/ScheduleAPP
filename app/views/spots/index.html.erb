@@ -43,25 +43,27 @@
 <% @spots.each do |spot|%>
 
 
-  <tr> 
-  <% frame_id = dom_id(spot )%>
+  <tr> <% frame_id = dom_id(spot )%>
   <%= form_with model: spot, data: {turbo_frame: frame_id} do %>
-    <%= turbo_frame_tag frame_id do %>
    
       <td> <%= spot.start_date%></td>
       <td> <%= spot.end_date%></td>
       <td> <%=spot.weekday%></td>
       <td> <%= spot.time %></td>
-      <td> <%= spot.spot_index_number %></td>
-      <td> <%= spot.user.full_name %></td>
+      <td> <%= spot.spot_index_number %></td> 
+     <td> 
+     
+      <%= turbo_frame_tag frame_id do %>
+         <%= spot.user.full_name %><%= link_to 'Edit', edit_spot_path(spot)%>
+      <% end %></td> 
       <td> <%= spot.lesson_amount %></td>
   
-      <td><%= link_to 'Edit', edit_spot_path(spot)%></td>
+      
       <td><%= link_to 'Show', spot_path(spot)%> <%= link_to 'Edit', edit_spot_path(spot)%> <%= button_to 'Delete', spot,  :method => :delete %></td>
   
       
    
-    <%end %>
+   
   <%end %> 
   </tr>
 <% end %>
