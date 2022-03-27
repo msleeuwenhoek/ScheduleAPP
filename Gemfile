@@ -11,6 +11,7 @@ gem "sprockets-rails"
 
 # Use sqlite3 as the database for Active Record
 
+gem 'fast_jsonapi'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -30,7 +31,8 @@ gem "jbuilder"
 
 gem "nokogiri", ">= 1.13.2"
 
-
+gem 'webpacker'
+gem 'react-rails'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
